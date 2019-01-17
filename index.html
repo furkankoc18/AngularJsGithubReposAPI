@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Github Repos</title>
+  <script type="text/javascript" src="../resources/js/angular.min.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+  <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
+</head>
+
+<body ng-app="uygulama" ng-controller="UygController">
+
+  <div class="container">
+    <div class="row">
+      <div>
+        <form ng-submit="getRepos()">
+          <input type="text" name="username" placeholder="Username" ng-model="username" class="form-control" style="width:850px;text-align:center">
+        </form>
+      </div>
+      <div ng-show="rendered" style="width:850px">
+        <div class="alert alert-danger h5">
+          Kullanıcı bulunamadı
+        </div>
+      </div>
+      <div ng-show="repos">
+        <input type=" text" name="name" ng-model="repoName" placeholder="Repo Name" class="form-control" style="width:850px;text-align:center">
+        <br>
+        <div ng-repeat="repo in repos | filter:repoName" style="border:solid 1px black;margin-bottom:20px;padding-left:50px; width:850px;">
+          <div>
+            <span style="color:red;font-weight:bold;">ID:</span>{{repo.id}}
+          </div>
+          <div>
+            <span>
+              <span style="color:red;font-weight:bold">Name:</span> {{repo.name}}
+          </div>
+          <div>
+            <span style="color:red;font-weight:bold;">Description:</span> {{repo.description}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
